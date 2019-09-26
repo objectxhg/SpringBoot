@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>动态页面</title>
+</head>
+<body>
+		<h1>Hello Spring Boot</h1>
+		
+		<!-- 遍历数组 -->
+		<table>
+			<tr th:each="demos:${list}">
+				<td th:text="${demos}"></td>
+			</tr>
+		</table>
+</body>
+</html>
