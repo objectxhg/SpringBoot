@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.PageInfo;
+
 import cn.xhg.ssm.pojo.User;
 import cn.xhg.ssm.service.UserService;
 
@@ -26,9 +28,9 @@ public class userController {
 	}
 	
 	@RequestMapping("/showAll")
-	public List<User> findAll(){
+	public PageInfo findAll(Integer pageNum, Integer pageSize){
 		System.out.println("aaaaa");
-		return userService.findAll();
+		return userService.findAll(pageNum,pageSize);
 	}
 	//restful 传参
 	@RequestMapping("/get/{id}")//@PathVariable("id") 获取路径参数。即url/{id}这种形式。

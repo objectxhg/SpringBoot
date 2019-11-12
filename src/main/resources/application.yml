@@ -22,3 +22,8 @@ mybatis:
       cn.xhg.ssm.mapper.UserMapper: debug
       
 
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

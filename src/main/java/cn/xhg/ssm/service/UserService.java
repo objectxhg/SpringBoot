@@ -2,11 +2,13 @@ package cn.xhg.ssm.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+
 import cn.xhg.ssm.pojo.User;
 
 public interface UserService {
 	
-	public List<User> findAll();
+	public PageInfo findAll(Integer pageNum, Integer pageSize);
 	
 	public User get(Integer id);
 	
@@ -15,4 +17,5 @@ public interface UserService {
 	public void update(User user);
 	
 	public void delete(Integer id);
+
 }
