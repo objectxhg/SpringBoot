@@ -2,11 +2,13 @@ package cn.xhg.ssm.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+
 import cn.xhg.ssm.pojo.User;
 
 public interface UserService {
 	
-	public List<User> findAll();
+	public PageInfo<User> findAll(Integer page, Integer pageSize);
 	
 	public User get(Integer id);
 	

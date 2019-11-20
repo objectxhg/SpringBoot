@@ -4,6 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
 import cn.xhg.ssm.mapper.UserMapper;
 import cn.xhg.ssm.pojo.User;
 import cn.xhg.ssm.service.UserService;
@@ -15,9 +18,12 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public List<User> findAll() {
+	public PageInfo<User> findAll(Integer page, Integer pageSize) {
+		PageHelper.startPage(page, pageSize);
+		List<User> list = userMapper.findAll();
+		PageInfo<User> pageUser = new PageInfo<User>(list);
 		
-		return userMapper.findAll();
+		return pageUser;
 	}
 
 	@Override

@@ -1,11 +1,20 @@
 server:
     port: 8888
 
+eureka:
+  instance:
+    hostname: 127.0.0.1 #服务注册中心IP地址
+  client:
+    registerWithEureka: false #是否向服务注册中心注册自己
+    fetchRegistry: false #是否检索服务
+    serviceUrl: #服务注册中心的配置内容，指定服务注册中心的位置
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
 spring: 
     datasource: 
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/boot?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+        url: jdbc:mysql://localhost:3306/emp?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
         username: root
         password: 1234
     thymeleaf:
@@ -13,30 +22,19 @@ spring:
         suffix: .html
         mode: HTML5
         
-              
-    ## Redis数据库索引（默认为0）
     redis:
         database: 0
-    ## Redis服务器地址
         host: 129.204.224.51
-    ## Redis服务器连接端口
         port: 6379
-    ## Redis服务器连接密码（默认为空）
         password: 
-    ## 连接池最大连接数（使用负值表示没有限制）
         pool:
           max-active: 8
-    ## 连接池最大阻塞等待时间（使用负值表示没有限制）
           max-wait: -1
-    ## 连接池中的最大空闲连接
           max-idle: 8
-    ## 连接池中的最小空闲连接
           min-idle: 0
-    ## 连接超时时间（毫秒）
         timeout: 1200
 
 mybatis: 
-    ##\u5B9E\u4F53\u7C7B\u8DEF\u5F84
     typeAliasesPackage: cn.xhg.ssm.pojo
     mapperLocations: classpath:mapper/*.xml
     
@@ -44,3 +42,10 @@ mybatis:
     level:
       cn.xhg.ssm.mapper.UserMapper: debug
 
+
+# pageHelper分页配置
+pagehelper:
+    helper-dialect: mysql
+    reasonable: true
+    support-methods-arguments: true
+    params: count=countSql
