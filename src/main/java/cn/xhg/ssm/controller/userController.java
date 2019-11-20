@@ -28,9 +28,9 @@ public class userController {
 	}
 	
 	@RequestMapping("/showAll")
-	public PageInfo<User> findAll(){
+	public PageInfo findAll(Integer pageNum, Integer pageSize){
 		System.out.println("aaaaa");
-		return userService.findAll(1,2);
+		return userService.findAll(pageNum,pageSize);
 	}
 	//restful 传参
 	@RequestMapping("/get/{id}")//@PathVariable("id") 获取路径参数。即url/{id}这种形式。

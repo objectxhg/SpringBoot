@@ -8,7 +8,7 @@ import cn.xhg.ssm.pojo.User;
 
 public interface UserService {
 	
-	public PageInfo<User> findAll(Integer page, Integer pageSize);
+	public PageInfo findAll(Integer pageNum, Integer pageSize);
 	
 	public User get(Integer id);
 	
@@ -17,4 +17,5 @@ public interface UserService {
 	public void update(User user);
 	
 	public void delete(Integer id);
+
 }

@@ -18,12 +18,11 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public PageInfo<User> findAll(Integer page, Integer pageSize) {
-		PageHelper.startPage(page, pageSize);
+	public PageInfo findAll(Integer pageNum,Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
 		List<User> list = userMapper.findAll();
-		PageInfo<User> pageUser = new PageInfo<User>(list);
-		
-		return pageUser;
+		PageInfo<User> pagelist = new PageInfo<>(list);
+		return pagelist;
 	}
 
 	@Override
