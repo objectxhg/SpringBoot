@@ -11,14 +11,22 @@ import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+@Component
 public class RedisUtil {
 	
 	
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;
 	
+	public static void main(String[] args) {
+		
+		RedisUtil redisUtil = new RedisUtil();
+		System.out.println(redisUtil.get("name"));
+		
+	}
 	
 	public boolean expire(String key, long time) {
 		        try {
@@ -68,6 +76,7 @@ public class RedisUtil {
 	     * @return 值
 	     */
 	    public Object get(String key) {
+	    	System.out.println(redisTemplate);
 	        return key == null ? null : redisTemplate.opsForValue().get(key);
 	    }
 	    
