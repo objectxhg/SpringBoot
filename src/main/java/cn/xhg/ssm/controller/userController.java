@@ -33,9 +33,8 @@ public class userController {
 		return userService.findAll(pageNum,pageSize);
 	}
 	//restful 传参
-	@RequestMapping("/get/{id}")//@PathVariable("id") 获取路径参数。即url/{id}这种形式。
-	public User findAll(@PathVariable("id") Integer id){
-		System.out.println("111111111");
+	@RequestMapping("/get")//@PathVariable("id") 获取路径参数。即url/{id}这种形式。
+	public User findAll( Integer id){
 		
 		return userService.get(id);
 	}

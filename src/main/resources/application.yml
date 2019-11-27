@@ -5,9 +5,23 @@ spring:
     datasource: 
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://121.43.158.136:3306/boot?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+        url: jdbc:mysql://121.43.158.136:3306/boot?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
         username: root
         password: aaa85444
+        
+    redis: 
+      jedis: 
+        pool: 
+          max-active: 10
+          max-wait: -1
+          max-idle: 100
+          min-idle: 0
+      host: 121.43.158.136
+      prot: 6379
+      password: redis85444  
+      timeout: 1000
+      database: 0    
+    
     thymeleaf:
         prefix: classpath:/templates/
         suffix: .html
@@ -17,7 +31,7 @@ mybatis:
     typeAliasesPackage: cn.xhg.ssm.pojo
     mapperLocations: classpath:mapper/*.xml
     
-##logging: 
+logging: 
     level:
       cn.xhg.ssm.mapper.UserMapper: debug
       
